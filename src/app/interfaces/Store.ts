@@ -1,4 +1,4 @@
-interface Store{
+export interface Store{
     id?: Number,
     subsidiary: String,
     address: String

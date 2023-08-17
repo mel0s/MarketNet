@@ -19,6 +19,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from  '@angular/common/http';
+import { MatTableModule } from '@angular/material/table';
 
 @NgModule({
   imports: [
@@ -27,6 +28,7 @@ import { HttpClientModule } from  '@angular/common/http';
     FormsModule,
     NgbModule,
     ReactiveFormsModule,
+    MatTableModule,
     HttpClientModule
   ],
   declarations: [

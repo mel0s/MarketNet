@@ -1,18 +1,23 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from "@env/environment";
+import { Client } from "app/interfaces/Client";
 
 @Injectable({
   providedIn: 'root'
 })
 export class ClientService {
 
-  url = environment.urlApi;
+  url = environment.urlApi + "Clients/";
 
   constructor(private http: HttpClient) {}
 
 
-  getClient() {
+  getClient(id: Number) {
+    return this.http.get(this.url + id);
+  }
+
+  getAllClients() {
     return this.http.get(this.url);
   }
 

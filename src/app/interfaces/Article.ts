@@ -1,4 +1,4 @@
-interface Article{
+export interface Article{
     id?:Number,
     code:String,
     description: String,

@@ -12,6 +12,10 @@ import { AppComponent } from './app.component';
 import { AppRoutes } from './app.routing';
 
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
+import { ClientService } from "./service/client/client.service";
+import { StoreService } from "./service/store/store.service";
+import { ArticleService } from "./service/article/article.service";
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -27,9 +31,15 @@ import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.compon
     NavbarModule,
     ToastrModule.forRoot(),
     FooterModule,
-    FixedPluginModule
+    FixedPluginModule,
+    HttpClientModule,
+
   ],
-  providers: [],
+  providers: [
+    ClientService,
+    StoreService,
+    ArticleService  
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

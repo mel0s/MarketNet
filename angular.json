@@ -33,13 +33,13 @@
           },
           "configurations": {
             "production": {
-              "optimization": true,
+              "optimization": false,
               "outputHashing": "all",
               "sourceMap": false,
               "namedChunks": false,
               "extractLicenses": true,
               "vendorChunk": false,
-              "buildOptimizer": true,
+              "buildOptimizer": false,
               "fileReplacements": [
                 {
                   "replace": "src/environments/environment.ts",
@@ -54,7 +54,7 @@
               "namedChunks": true,
               "buildOptimizer": false,
               "optimization": {
-                "scripts": true,
+                "scripts": false,
                 "styles": {
                   "minify": false,
                   "inlineCritical": true
@@ -68,7 +68,7 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "pd-free-angularcli:build"
+            "browserTarget": "pd-free-angularcli:build:development"
           },
           "configurations": {
             "production": {
