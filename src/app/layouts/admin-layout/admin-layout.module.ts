@@ -17,12 +17,17 @@ import { ClientComponent } from '../../pages/client/client.component';
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
+import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from  '@angular/common/http';
+
 @NgModule({
   imports: [
     CommonModule,
     RouterModule.forChild(AdminLayoutRoutes),
     FormsModule,
-    NgbModule
+    NgbModule,
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   declarations: [
     DashboardComponent,
@@ -34,6 +39,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     MapsComponent,
     NotificationsComponent,
     ClientComponent
+    
   ]
 })
 
