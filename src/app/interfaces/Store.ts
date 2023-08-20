@@ -1,5 +1,5 @@
 export interface Store{
-    id?: Number,
-    subsidiary: String,
-    address: String
+    id?: number,
+    subsidiary: string,
+    address: string
 }

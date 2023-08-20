@@ -1,0 +1,128 @@
+<div class="row">
+    <div class="col-md-4 offset-4">
+      <div class="card card-user">
+        <div class="card-header">
+          <h5 class="card-title">Article</h5>
+        </div>
+        <div class="card-body">
+          <form [formGroup]="myForm" (ngSubmit)="onSubmit(myForm)">
+            <div class="row">
+  
+              <div class="col-md-12 px-3">
+                <div class="form-group">
+                  <label>Code</label>
+                  <input type="text" class="form-control" placeholder="Code" formControlName="code">
+                  <div *ngIf="code?.invalid && (code?.dirty || code?.touched)" class="alert">
+                    <div *ngIf="code?.errors?.['required']">
+                      Code is required.
+                    </div>
+                    <div *ngIf="code?.errors?.['minlength']">
+                      Code must be at least {{code?.errors?.['minlength']?.requiredLength}} characters long.
+                    </div>
+                  </div>
+                </div>
+              </div>
+  
+              <div class="col-md-12 px-3">
+                <div class="form-group">
+                  <label>Description</label>
+                  <input type="text" class="form-control" placeholder="Description" formControlName="description">
+  
+                  <div *ngIf="description?.invalid && (description?.dirty || description?.touched)" class="alert">
+  
+                    <div *ngIf="description?.errors?.['required']">
+                      Description is required.
+                    </div>
+                    <div *ngIf="description?.errors?.['minlength']">
+                      Description must be at least {{description?.errors?.['minlength'].requiredLength}} characters long.
+                    </div>
+                  </div>
+                </div>
+              </div>
+  
+              <div class="col-md-12  px-3">
+                <div class="form-group">
+                  <label>Stock</label>
+                  <input type="text" class="form-control" placeholder="Stock" formControlName="stock">                  
+                  <div *ngIf="stock?.invalid && (stock?.dirty || stock?.touched)" class="alert">
+                  
+                    <div *ngIf="stock?.errors?.['required']">
+                      Stock is required.
+                    </div>
+                    <div *ngIf="price?.errors?.['pattern']">
+                      Stock must be at least {{stock?.errors?.['minlength'].requiredLength}} characters long.
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-12  px-3">
+                <div class="form-group">
+                  <label>Precio</label>
+                  <input type="text" class="form-control" placeholder="Precio" formControlName="price">                  
+                  <div *ngIf="price?.invalid && (price?.dirty || price?.touched)" class="alert">
+                  
+                    <div *ngIf="price?.errors?.['required']">
+                      Price is required.
+                    </div>
+                    <div *ngIf="price?.errors?.['pattern']">
+                      Price no is number valid.
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+  
+            <div class="row">
+              <div class="update ml-auto mr-auto">
+                <button type="submit" class="btn btn-primary btn-round">Save Article</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="row">
+
+    <div class="col-md-10 offset-1">
+      <table mat-table #tabla [dataSource]="dataSource" class="table table-striped table-dark" matSort (matSortChange)="sortData($event)">
+  
+  
+  
+        <ng-container matColumnDef="code">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by code"> Code </th>
+          <td mat-cell *matCellDef="let element"> {{element.code}} </td>
+        </ng-container>
+    
+    
+        <ng-container matColumnDef="description">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by description"> Description </th>
+          <td mat-cell *matCellDef="let element"> {{element.description}} </td>
+        </ng-container>
+    
+    
+        <ng-container matColumnDef="price">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by Price"> Price </th>
+          <td mat-cell *matCellDef="let element"> {{element.price}} </td>
+        </ng-container>
+  
+        <ng-container matColumnDef="stock">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by stock"> Stock </th>
+          <td mat-cell *matCellDef="let element"> {{element.stock}} </td>
+        </ng-container>
+  
+        <ng-container matColumnDef="actions">
+          <th mat-header-cell *matHeaderCellDef > Actions </th>
+          <td mat-cell *matCellDef="let element">
+             <button mat-button class="btn btn-info" (click)="editItem(element)" >Edit</button> </td>
+        </ng-container>
+    
+        <tr mat-header-row *matHeaderRowDef="options"></tr>
+        <tr mat-row *matRowDef="let row; columns: options;"></tr>
+      </table>
+    </div>
+  
+  
+  </div>

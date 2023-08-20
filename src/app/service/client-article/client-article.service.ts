@@ -1,14 +1,14 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { environment } from "@env/environment";
-import { Client } from "app/interfaces/Client";
+import { ClientArticle } from '@app/interfaces/ClientArticle';
+import { environment } from '@env/environment';
 
 @Injectable({
   providedIn: 'root'
 })
-export class ClientService {
+export class ClientArticleService {
 
-  url = environment.urlApi + "Clients/";
+  url = environment.urlApi + "ClientArticles/";
 
   constructor(private http: HttpClient) {}
 
@@ -17,16 +17,11 @@ export class ClientService {
     return this.http.get(this.url + id);
   }
 
-  getListClient() {
-    return this.http.get(this.url + "list/");
+  getAllClientArticles() {
+    return this.http.get(this.url );
   }
 
-  
-  getAllClients() {
-    return this.http.get(this.url);
-  }
-
-  saveClient(client: Client) {
+  saveClientArticles(client: ClientArticle) {
     return this.http.post(this.url, client,{
       headers:{
         'Content-Type': 'application/json',
@@ -35,13 +30,11 @@ export class ClientService {
     });
   }
 
-  updateClient(client: Client) {
+  updateClientArticles(client: ClientArticle) {
     return this.http.put(this.url+ client.id, client);
   }
 
-  deleteClient(id:Number) {
+  deleteClientArticles(id:Number) {
     return this.http.delete(this.url + id);
   }
-
-
 }

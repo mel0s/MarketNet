@@ -7,12 +7,19 @@ import { Article } from "app/interfaces/Article";
   providedIn: 'root'
 })
 export class ArticleService {
-  url = environment.urlApi;
+  url = environment.urlApi + "Articles/";
+
   constructor(private http: HttpClient) { }
 
-  getArticle() {
+  getAllArticles() {
     return this.http.get(this.url);
   }
+
+
+  getArticle(id:Number) {
+    return this.http.get(this.url + id);
+  }
+
 
   saveArticle(article: Article) {
     return this.http.post(this.url, article);

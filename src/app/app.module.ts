@@ -12,18 +12,21 @@ import { AppComponent } from './app.component';
 import { AppRoutes } from './app.routing';
 
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
-import { ClientService } from "./service/client/client.service";
-import { StoreService } from "./service/store/store.service";
-import { ArticleService } from "./service/article/article.service";
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { HttpErrorInterceptorService } from "./interceptor/http-error-interceptor.service";
+import { HttpServiceInterceptor } from "./interceptor/http-service.interceptor";
 
+
+
+  
 @NgModule({
   declarations: [
     AppComponent,
-    AdminLayoutComponent,
+    AdminLayoutComponent
   ],
   imports: [
     BrowserAnimationsModule,
+   
     RouterModule.forRoot(AppRoutes, {
       useHash: true
     }),
@@ -36,9 +39,8 @@ import { HttpClientModule } from '@angular/common/http';
 
   ],
   providers: [
-    ClientService,
-    StoreService,
-    ArticleService  
+    { provide: HTTP_INTERCEPTORS, useClass: HttpServiceInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: HttpErrorInterceptorService, multi: true } 
   ],
   bootstrap: [AppComponent]
 })

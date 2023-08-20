@@ -8,16 +8,20 @@ import { Store } from 'app/interfaces/Store';
 })
 export class StoreService {
 
-  url = environment.urlApi;
+  url = environment.urlApi + "Stores/";
 
   constructor(private http: HttpClient) {}
 
 
-  getStore() {
+  getAllStores() {
     return this.http.get(this.url);
   }
 
-  savestore(store: Store) {
+  getStore(id:Number) {
+    return this.http.get(this.url+id);
+  }
+
+  saveStore(store: Store) {
     return this.http.post(this.url, store);
   }
 
